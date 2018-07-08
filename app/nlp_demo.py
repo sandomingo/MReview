@@ -26,7 +26,6 @@ def comment_tag():
     """ 带参数调用评论观点抽取 """
     resp = client.commentTag(comment, options)
     pretty_resp = json.dumps(resp, indent=4, ensure_ascii=False)
-    print(pretty_resp)
     return render_template('comment_tag.html', comment_tag=pretty_resp)
 
 
