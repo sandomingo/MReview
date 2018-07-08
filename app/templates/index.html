@@ -1,12 +1,27 @@
 <html>
 <head>
-  <title>Please Sign In</title>
+  <title>评论观点抽取Demo</title>
 </head>
 <body>
-  <h1>调用评论观点抽取Demo</h1>
+  <h1>评论观点抽取Demo</h1>
   <form action="/comment_tag" method="post">
-      <p><textarea name="comment" placeholder="Comment" value="{{ comment }}"></textarea></p>
-    <p><input name="type" placeholder="type" value="{{ type }}" /></p>
+      <p><textarea rows="10" cols="50" name="comment" placeholder="简单方便好用音质不错" value="{{ comment }}"></textarea></p>
+    <p>评论行业类型:
+      <select name="type">
+        <option value="13">3C</option>
+        <option value="1">酒店</option>
+        <option value="2">KTV3 - 丽人</option>
+        <option value="4">美食餐饮</option>
+        <option value="5">旅游</option>
+        <option value="6">健康</option>
+        <option value="7">教育</option>
+        <option value="8">商业</option>
+        <option value="9">房产</option>
+        <option value="10">汽车</option>
+        <option value="11">生活</option>
+        <option value="12">购物</option>
+       </select>
+    </p>
     <p><button type="submit">帮忙分析一下呗！</button></p>
   </form>
 </body>
