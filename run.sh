@@ -1,0 +1,1 @@
+nohup python app/nlp_demo.py > nlp_demo.log 2>&1 &
