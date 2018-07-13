@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 from flask import Flask, render_template, request
-from aip import AipNlp
+import requests
 import json
 
 app = Flask(__name__)
@@ -10,7 +10,12 @@ APP_ID = '11506585'
 API_KEY = 'HnN0yHhGevtKHSK5wLu9qndH'
 SECRET_KEY = 'qsXCP39wozNaQzXD6pVTrlDyjlah6SCI'
 
-client = AipNlp(APP_ID, API_KEY, SECRET_KEY)
+host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(API_KEY, SECRET_KEY)
+headers = {'Content-Type': 'application/json; charset=UTF-8'}
+response = requests.get(host, headers=headers)
+response_str = response.text
+access_token = json.loads(response_str)['access_token']
+query_url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/comment_tag_custom?access_token=%s' % access_token
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -23,9 +28,12 @@ def comment_tag():
     options = {}
     options["type"] = type
 
+    """ 构建查询 """
+    data = ('{"text": "%s", "type": %s}'%(comment, type)).encode('gbk')
+
     """ 带参数调用评论观点抽取 """
-    resp = client.commentTag(comment, options)
-    pretty_resp = json.dumps(resp, indent=4, ensure_ascii=False)
+    resp = requests.post(query_url, headers={'Content-Type': 'application/json'}, data=data).text
+    pretty_resp = json.dumps(json.loads(resp), indent=4, ensure_ascii=False)
     return render_template('comment_tag.html', comment_tag=pretty_resp)
 
 
