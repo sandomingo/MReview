@@ -6,9 +6,9 @@ import json
 
 app = Flask(__name__)
 """ APPID AK SK """
-APP_ID = '11506585'
-API_KEY = 'HnN0yHhGevtKHSK5wLu9qndH'
-SECRET_KEY = 'qsXCP39wozNaQzXD6pVTrlDyjlah6SCI'
+APP_ID = '11535456'
+API_KEY = 'Z48smZeQ6Vyxgxv1f9e47UfN'
+SECRET_KEY = '1liGIVXWuQlqMYGXZrucVNX47G8HrQdA'
 
 host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(API_KEY, SECRET_KEY)
 headers = {'Content-Type': 'application/json; charset=UTF-8'}
