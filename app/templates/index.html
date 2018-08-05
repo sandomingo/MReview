@@ -1,28 +1,24 @@
-<html>
-<head>
-  <title>评论观点抽取Demo</title>
-</head>
-<body>
-  <h1>评论观点抽取Demo</h1>
-  <form action="/comment_tag" method="post">
-      <p><textarea rows="10" cols="50" name="comment" placeholder="请在这里填写用户评论..." value="{{ comment }}"></textarea></p>
-    <p>评论行业类型:
-      <select name="type">
-        <option value="13">3C</option>
-        <option value="1">酒店</option>
-        <option value="2">KTV3 - 丽人</option>
-        <option value="4">美食餐饮</option>
-        <option value="5">旅游</option>
-        <option value="6">健康</option>
-        <option value="7">教育</option>
-        <option value="8">商业</option>
-        <option value="9">房产</option>
-        <option value="10">汽车</option>
-        <option value="11">生活</option>
-        <option value="12">购物</option>
-       </select>
-    </p>
-    <p><button type="submit">帮忙分析一下呗！</button></p>
-  </form>
-</body>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  </head>
+
+  <body class="text-center">
+    <form class="search" action="/get_report" method="post">
+      <h1 class="h3 mb-3 font-weight-normal">MReview</h1>
+      <input name="product-url" id="product-url" class="form-control" placeholder="Product URL(z.cn)" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+  </body>
 </html>

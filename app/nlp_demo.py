@@ -21,6 +21,16 @@ query_url = 'https://aip.baidubce.com/rpc/2.0/nlp/v2/comment_tag_custom?access_t
 def index():
     return render_template('index.html')
 
+@app.route('/get_report', methods=['GET', 'POST'])
+def get_report():
+    url = request.form['product-url']
+    # extract product id
+    print(url)
+    # get report
+    #
+    report = {'总体':{'好':10, '坏':5}}
+    return render_template('report.html', report=report )
+
 @app.route('/comment_tag', methods=['GET', 'POST'])
 def comment_tag():
     comment = request.form['comment']
@@ -34,7 +44,7 @@ def comment_tag():
     """ 带参数调用评论观点抽取 """
     resp = requests.post(query_url, headers={'Content-Type': 'application/json'}, data=data).text
     pretty_resp = json.dumps(json.loads(resp), indent=4, ensure_ascii=False)
-    return render_template('comment_tag.html', comment_tag=pretty_resp)
+    return render_template('comment_tag_result.html', comment_tag=pretty_resp)
 
 
 if __name__ == '__main__':
