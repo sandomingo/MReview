@@ -27,7 +27,6 @@ class MobileelectroSpider(scrapy.Spider):
     def parse_comment(self, response):
         review_list = response.xpath('//div[(@data-hook = "review")]')
         for review in review_list:
-            print(review)
             yield {
                 'review_author': review.xpath('div/div/span/a[(@data-hook = "review-author")]/text()').extract_first().strip(),
                 'review_star': review.xpath('div/div/a/i[(@data-hook = "review-star-rating")]/span/text()').extract_first().strip(),
