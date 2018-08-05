@@ -28,10 +28,10 @@ class MobileelectroSpider(scrapy.Spider):
         review_list = response.xpath('//div[(@data-hook = "review")]')
         for review in review_list:
             yield {
-                'review_author': review.xpath('div/div/span/a[(@data-hook = "review-author")]/text()').extract_first().strip(),
-                'review_star': review.xpath('div/div/a/i[(@data-hook = "review-star-rating")]/span/text()').extract_first().strip(),
-                'review_body': review.xpath('div/div/span[(@data-hook = "review-body")]/text()').extract_first().strip(),
-                'review_date': review.xpath('div/div/span[(@data-hook = "review-date")]/text()').extract_first().strip(),
+                'review_author': review.xpath('.//a[(@data-hook = "review-author")]/text()').extract_first().strip(),
+                'review_star': review.xpath('.//i[(@data-hook = "review-star-rating")]/span/text()').extract_first().strip(),
+                'review_body': review.xpath('.//span[(@data-hook = "review-body")]/text()').extract_first().strip(),
+                'review_date': review.xpath('.//span[(@data-hook = "review-date")]/text()').extract_first().strip(),
 
             }
         # find next page
